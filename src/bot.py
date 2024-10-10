@@ -8,15 +8,16 @@ import websockets
 from dotenv import load_dotenv
 from telegram import Bot
 
-logging.basicConfig(level=logging.DEBUG)
-load_dotenv(verbose=True, override=True)
+logging.basicConfig(level=logging.INFO)
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), 'config', '.env'))
 
 URL = "wss://fstream.binance.com/ws/!forceOrder@arr"
 THRESHOLD = 50000  # USDT
 
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHANNEL")
-bot = Bot(token=TELEGRAM_TOKEN)
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL")
+bot = Bot(token=BOT_TOKEN)
 
 
 async def gateData(rawData):
@@ -53,12 +54,12 @@ async def processMessage(rawData, liqValue, avgPrice):
         f"${liqPrice}: ${formatted_liqValue}{fire_emoji}"
     )
 
-    await sendMessage(CHAT_ID, liqMessage)
+    await sendMessage(CHANNEL_ID, liqMessage)
 
 
-async def sendMessage(chat_id, liqMessage):
+async def sendMessage(channel_id, liqMessage):
     try:
-        await bot.send_message(chat_id, text=liqMessage)
+        await bot.send_message(channel_id, text=liqMessage)
         logging.info(f"sendMessage at {datetime.datetime.now()}: {liqMessage}")
     except Exception as e:
         logging.error(f"Error sendMessage: {e}")
