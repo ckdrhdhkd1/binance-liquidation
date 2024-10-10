@@ -12,9 +12,8 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(
     os.path.dirname(__file__)), 'config', '.env'))
 
-URL = "wss://fstream.binance.com/ws/!forceOrder@arr"
-THRESHOLD = 50000  # USDT
-
+URL = os.getenv("URL", "wss://fstream.binance.com/ws/!forceOrder@arr")
+THRESHOLD = int(os.getenv("THRESHOLD", 50000))
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL")
 bot = Bot(token=BOT_TOKEN)
