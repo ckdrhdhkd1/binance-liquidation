@@ -14,5 +14,6 @@ Binance Futures All Market Liquidation Order Alert for Telegram Channel.<br><br>
 ## Caution!
 - Setting `THRESHOLD` too low can hit Telegram's rate limit.<br><br>
 
-## Sample Image
+## Sample
+- Tested in Oracle Cloud Instance over 6 months with no problems.
 <img src="sample/alertSample.png" alt="Alt text" width="281"/>
