@@ -11,7 +11,7 @@ Binance Futures All Market Liquidation Order Alert for Telegram Channel.<br><br>
 - The `.env` file must be located in the `config/` folder within the project root.
 - Use the existing `config/.env.example` file to create your `config/.env` file.<br><br>
 
-## Caution!
+## Caution
 - Setting `THRESHOLD` too low can hit Telegram's rate limit.<br><br>
 
 ## Sample
