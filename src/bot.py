@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(
     os.path.dirname(__file__)), 'config', '.env'))
 
-# replace !forceOrder@arr to <symbol>@forceOrder for specific crypto liquidation alert
+# replace !forceOrder@arr to <symbol>@forceOrder in .env for specific crypto liquidation alert
 URL = os.getenv("URL", "wss://fstream.binance.com/ws/!forceOrder@arr")
 THRESHOLD = int(os.getenv("THRESHOLD", 50000))
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
